@@ -10,9 +10,9 @@ var beeper = require('beeper');
 
 // postcss plugins
 var autoprefixer = require('autoprefixer');
-var colorFunction = require('postcss-color-mod-function');
 var cssnano = require('cssnano');
 var easyimport = require('postcss-easy-import');
+const tailwind = require('tailwindcss')
 
 function serve(done) {
     livereload.listen();
@@ -38,7 +38,7 @@ function hbs(done) {
 function css(done) {
     var processors = [
         easyimport,
-        colorFunction(),
+        tailwind(),
         autoprefixer(),
         cssnano()
     ];
@@ -76,7 +76,7 @@ function zipper(done) {
     ], handleError(done));
 }
 
-const cssWatcher = () => watch('assets/css/**', css);
+const cssWatcher = () => watch(['*.hbs', '**/**/*.hbs', '!node_modules/**/*.hbs'], css);
 const hbsWatcher = () => watch(['*.hbs', '**/**/*.hbs', '!node_modules/**/*.hbs'], hbs);
 const watcher = parallel(cssWatcher, hbsWatcher);
 const build = series(css, js);

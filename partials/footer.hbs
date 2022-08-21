@@ -1,0 +1,110 @@
+{{#*inline "social"}}
+    <a class="hover:opacity-75" href="{{href}}" rel="noreferrer" target="_blank">
+        <span class="sr-only">{{name}}</span>
+        {{> (concat "icons/" name) }}
+    </a>
+{{/inline}}
+
+<footer class="bg-gray-50">
+    <div class="mx-auto container max-w-7xl px-4 py-10 md:py-16 sm:px-6 lg:px-10">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <div class="flex flex-col items-center md:items-start">
+                <div class="w-44">
+                    <img src="{{@site.logo}}" alt="{{@site.title}}">
+                </div>
+
+                <div class="flex mt-8 space-x-5 text-gray-600">
+                    {{> social name="facebook" href=(facebook_url)}}
+                    {{> social name="instagram" href="https://instagram.com/esieespace"}}
+                    {{> social name="linkedin" href="https://www.linkedin.com/company/esieespace/"}}
+                    {{> social name="github" href="https://github.com/esieespace"}}
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <p class="font-medium">Association</p>
+
+                    <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-600">
+                        <a class="hover:opacity-75" href="https://boutique.esieespace.fr">
+                            <span class="inline-flex items-center">
+                                <span>La Boutique</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+
+                        <a class="hover:opacity-75" href="">A Propos</a>
+                        <a class="hover:opacity-75" href="">Le Blog</a>
+                        <a class="hover:opacity-75" href="">Nos Projets</a>
+                    </nav>
+                </div>
+
+                <div>
+                    <p class="font-medium">Liens</p>
+
+                    <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-600">
+                        <a class="hover:opacity-75" href="https://sumobot.esieespace.fr">
+                            <span class="inline-flex items-center">
+                                <span>Sumobot</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+
+                        <a class="hover:opacity-75" href="https://opengate.space">
+                            <span class="inline-flex items-center">
+                                <span>OpenGate</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+
+                        <a class="hover:opacity-75" href="https://hackday.fr">
+                            <span class="inline-flex items-center">
+                                <span>HackDay</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+
+                        <a class="hover:opacity-75" href="https://caliban.fr">
+                            <span class="inline-flex items-center">
+                                <span>Caliban</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+
+                        <a class="hover:opacity-75" href="https://esiee.fr">
+                            <span class="inline-flex items-center">
+                                <span>ESIEE Paris</span>
+                                {{> icons/extern}}
+                            </span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div>
+                    <p class="font-medium">Ressources</p>
+
+                    <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-600">
+                        <a class="hover:opacity-75" href="">Contactez-nous</a>
+                        <a class="hover:opacity-75" href="">FAQs</a>
+                        <a class="hover:opacity-75" href="">Juridique</a>
+                    </nav>
+                </div>
+
+                <div>
+                    <p class="font-medium">Legal</p>
+
+                    <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-600">
+                        <a class="hover:opacity-75" href=""> Privacy Policy </a>
+                        <a class="hover:opacity-75" href=""> Terms & Conditions </a>
+                        <a class="hover:opacity-75" href=""> Returns Policy </a>
+                        <a class="hover:opacity-75" href=""> Accessibility </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-8 text-xs text-gray-600">
+            &copy; {{date format="YYYY"}} ESIEESPACE
+        </p>
+    </div>
+</footer>

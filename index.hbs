@@ -1,15 +1,185 @@
 {{!< default}}
 
-<div class="gh-page">
-    <div class="gh-container">
+{{#*inline "card"}}
+    <a class="relative block group h-96" href="{{href}}">
+        <span class="absolute inset-0 border-2 border-white border-dashed rounded-md"></span>
+        <div class="relative text-white flex items-end h-full transition-transform rounded-md transform
+                        bg-transparent border-2 border-white group-hover:-translate-x-2 group-hover:-translate-y-2
+                        object-center">
 
-        <div class="gh-postfeed">
-        {{#foreach posts}}
+            <img class="absolute rounded-md inset-0 object-cover w-full h-full group-hover:blur
+                            group-hover:brightness-50 transition-transform"
+                 alt="{{alt}}"
+                 src="{{asset image}}">
 
-            {{> "card"}} {{!-- partials/card.hbs --}}
+            <div class="z-10 text-white px-8 pb-8 transition-opacity group-hover:opacity-0 group-hover:absolute">
+                <h2 class="mt-4 text-3xl font-semibold">{{name}}</h2>
+            </div>
 
-        {{/foreach}}
+            <div class="absolute p-8 transition-opacity opacity-0 group-hover:opacity-100">
+                <h2 class="mt-4 text-3xl font-semibold">{{name}}</h2>
+                <p class="mt-4">{{description}}</p>
+                <p class="mt-8 font-semibold">{{more}}</p>
+            </div>
+        </div>
+    </a>
+{{/inline}}
+
+<section class="relative h-screen bg-black flex items-center justify-center">
+    <div class="absolute inset-0" id="starfield">
+        <canvas id="starfield-canvas"></canvas>
+    </div>
+
+    <div class="relative w-2/3 max-w-2xl sm:w-7/12">
+        <img src="{{asset "images/logo_white.png"}}" alt="Logo de ESIEESPACE">
+    </div>
+</section>
+
+<section class="mx-auto container max-w-7xl px-4 py-10 md:py-16 sm:px-6 lg:px-10">
+    <div class="mx-auto text-center mt-10 md:mt-20">
+        <h1 class="text-3xl text-transparent font-bold md:text-7xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+            Association ESIEESPACE
+        </h1>
+
+        <p class="mt-6 text-gray-400 text-lg">
+            L'association d'électronique, d'informatique, de robotique & d'aérospatial de ESIEE Paris
+        </p>
+
+        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
+            <div class="rounded-md shadow">
+                <a class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                   href="https://boutique.esieespace.fr">
+                    <span class="inline-flex items-center">
+                        <span>La Boutique</span>
+                        {{> icons/extern }}
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 gap-y-10 space my-20 p-3 md:p-0">
+        {{> card name="L'Association"
+            href="https://google.com"
+            image="images/bureau.jpg"
+            description="Fondée en 1984, ESIEESPACE est le lieu de rendez-vous des étudiants intéressés par l'électronique et la
+            technologie."
+            more="Découvrir l'association"}}
+
+        {{> card name="Les Projets"
+            href="https://google.com"
+            image="images/bot.jpg"
+            description="Nous aidons nos membres à réaliser les projets de leur choix aussi bien techniquement que
+            financièrement."
+            more="Voir nos projets"}}
+
+        {{> card name="Les Événements"
+            href="https://google.com"
+            image="images/hackday.jpg"
+            description="Nous participons et organisons des événements aux envergures nationales."
+            more="Découvrir nos événements"}}
+        </a>
+    </div>
+
+    <div aria-label="Sponsors" class="px-5 my-24 mx-auto lg:px-16">
+        <div class="flex flex-col w-full mb-6 text-center">
+                <span class="text-sm font-medium inline tracking-wide text-gray-400 uppercase">
+                    Ils nous aident dans nos projets
+                    <a class="font-semibold ml-2 text-blue-600 hover:text-blue-500" href="#0">
+                        Pourquoi pas vous »
+                    </a>
+                </span>
         </div>
 
+        <div class="mx-auto text-center">
+            <div class="grid auto-rows-min grid-cols-2 gap-4 gap-y-10 mx-auto lg:grid-cols-5">
+                <div>
+                    <a href="https://esiee.fr/" rel="noopener noreferrer">
+                        <img class="mx-auto h-16"
+                             alt="ESIEE Paris"
+                             src="{{asset "images/logo/esiee_paris.svg"}}" />
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.descartes-devinnov.com/fablab-descartes/" rel="noopener noreferrer">
+                        <img class="mx-auto h-16"
+                             alt="Fablab Descartes"
+                             src="{{asset "images/logo/fablab_descartes.svg"}}" />
+                    </a>
+                </div>
+                <div>
+                    <a href="https://fr.rs-online.com/web/" rel="noopener noreferrer">
+                        <img class="mx-auto h-16"
+                             alt="RS Components"
+                             src="{{asset "images/logo/rs.svg"}}" />
+                    </a>
+                </div>
+                <div class="flex items-center justify-center">
+                    <a href="https://thingz.co/" rel="noopener noreferrer">
+                        <img class="mx-auto h-16"
+                             alt="Thingz"
+                             src="{{asset "images/logo/thingz.svg"}}" />
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.crous-creteil.fr/" rel="noopener noreferrer">
+                        <img class="mx-auto h-16"
+                             alt="CROUS Créteil"
+                             src="{{asset "images/logo/crous_creteil.svg"}}" />
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<section>
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+            <div class="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
+                <img src="https://images.pexels.com/photos/2408666/pexels-photo-2408666.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" class="object-cover w-full h-64" alt="" />
+                <div class="p-5 border border-t-0">
+                    <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
+                        <a href="/" class="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700" aria-label="Category" title="traveling">traveling</a>
+                        <span class="text-gray-600">— 28 Dec 2020</span>
+                    </p>
+                    <a href="/" aria-label="Category" title="Visit the East" class="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700">Visit the East</a>
+                    <p class="mb-2 text-gray-700">
+                        Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem doloremque.
+                    </p>
+                    <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
+                </div>
+            </div>
+            <div class="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
+                <img src="https://images.pexels.com/photos/447592/pexels-photo-447592.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-64" alt="" />
+                <div class="p-5 border border-t-0">
+                    <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
+                        <a href="/" class="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700" aria-label="Category" title="traveling">traveling</a>
+                        <span class="text-gray-600">— 28 Dec 2020</span>
+                    </p>
+                    <a href="/" aria-label="Category" title="Simple is better" class="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700">Simple is better</a>
+                    <p class="mb-2 text-gray-700">
+                        Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem doloremque.
+                    </p>
+                    <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
+                </div>
+            </div>
+            <div class="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
+                <img src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-64" alt="" />
+                <div class="p-5 border border-t-0">
+                    <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
+                        <a href="/" class="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700" aria-label="Category" title="traveling">traveling</a>
+                        <span class="text-gray-600">— 28 Dec 2020</span>
+                    </p>
+                    <a href="/" aria-label="Category" title="Film It!" class="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700">Film It!</a>
+                    <p class="mb-2 text-gray-700">
+                        Sed ut perspiciatis unde omnis iste natus error sit sed quia consequuntur magni voluptatem doloremque.
+                    </p>
+                    <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="{{asset "js/astrofield.js"}}"></script>
