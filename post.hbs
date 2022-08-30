@@ -2,66 +2,60 @@
 
 {{#post}}
 
-<article class="gh-article {{post_class}}">
+    <div class="px-4 sm:px-6 md:px-8">
+        <div class="max-w-4xl mx-auto pb-28">
+            <article>
+                <header class="py-8">
+                    <div class="text-sm">
+                        <dl>
+                            <dt class="sr-only">Date</dt>
+                            <dd class="text-slate-700 text-lg dark:text-slate-400 capitalize">
+                                <time datetime="{{date format="MM-DD-YYYY"}}">
+                                    {{date format="dddd DD MMMM YYYY"}}
+                                </time>
+                            </dd>
+                        </dl>
+                    </div>
 
-    <header class="gh-header gh-canvas">
-        <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span>
-        <h1 class="gh-title">{{title}}</h1>
+                    <h1 class="text-2xl font-extrabold tracking-tight text-slate-200 md:text-5xl mt-1">
+                        {{title}}
+                    </h1>
 
-        {{#if custom_excerpt}}
-        <p class="gh-excerpt">{{custom_excerpt}}</p>
-        {{/if}}
+                    <div class="mt-6">
+                        <ul class="flex flex-wrap text-sm leading-6">
+                            {{#foreach authors}}
+                                <li class="flex items-center font-medium whitespace-nowrap">
+                                    <img src="{{profile_image}}" alt=""
+                                         class="mr-3 w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800">
+                                    <div class="text-sm leading-4">
+                                        <div class="text-slate-900 dark:text-slate-200">{{name}}</div>
+                                        {{#if twitter}}
+                                            <div class="mt-1 text-sky-500 hover:text-sky-600 dark:text-sky-400">
+                                                <a href="https://twitter.com/{{twitter}}"
+                                                   class="text-sky-500 hover:text-sky-600 dark:text-sky-400">
+                                                    {{twitter}}
+                                                </a>
+                                            </div>
+                                        {{/if}}
+                                    </div>
+                                </li>
+                            {{/foreach}}
+                        </ul>
+                    </div>
 
-        {{#if feature_image}}
-        <figure class="gh-feature-image">
-            <img
-                srcset="{{img_url feature_image size="s"}} 300w,
-                        {{img_url feature_image size="m"}} 600w,
-                        {{img_url feature_image size="l"}} 1000w,
-                        {{img_url feature_image size="xl"}} 2000w"
-                sizes="(max-width: 1000px) 1000px, 2000px"
-                loading="lazy"
-                src="{{img_url feature_image size="xl"}}"
-                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-            />
-            {{#if feature_image_caption}}
-                <figcaption>{{feature_image_caption}}</figcaption>
-            {{/if}}
-        </figure>
-        {{/if}}
-    </header>
+                    <figure>
+                        <img class="rounded-xl object-cover mt-10 aspect-video"
+                             src="{{feature_image}}" alt="{{feature_image_alt}}">
+                        <figcaption class="text-gray-400 text-sm mt-2">
+                            {{feature_image_caption}}
+                        </figcaption>
+                    </figure>
+                </header>
 
-    <div class="gh-content gh-canvas">
-        {{content}}
-    </div>
-
-    <footer class="gh-footer gh-canvas">
-
-        <div class="gh-post-authors">
-            Written by {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
-        </div>
-
-        {{!--
-        <section class="gh-post-comments">
-            If you want to embed comments, this is a good place to do it!
-        </section>
-        --}}
-
-    </footer>
-
-</article>
-
-<aside class="gh-readmore">
-    <div class="gh-readmore-inner gh-container">
-        <div class="gh-readmore-next">
-            {{#next_post}}<a href="{{url}}">{{> "icons/arrow-left"}} <h4>{{title}}</h4></a>{{/next_post}}
-        </div>
-        <div class="gh-readmore-prev">
-            {{#prev_post}}<a href="{{url}}">
-                <h4>{{title}}</h4> {{> "icons/arrow-right"}}
-            </a>{{/prev_post}}
+                <div class="pt-10 prose lg:prose-xl prose-invert max-w-none">
+                    {{content}}
+                </div>
+            </article>
         </div>
     </div>
-</aside>
-
 {{/post}}

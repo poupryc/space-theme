@@ -10,6 +10,10 @@ production stylesheet in assets/built/screen.css using: gulp dev
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.home-template {
-    @apply bg-gray-900;
+.home-template, .post-template {
+    @apply bg-slate-900;
+}
+
+figure figcaption a {
+    @apply font-semibold;
 }

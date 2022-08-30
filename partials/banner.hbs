@@ -39,10 +39,10 @@
         const banner = document.getElementById("banner")
         const button = banner.querySelector("button")
 
-        setTimeout(() => banner.classList.toggle("opacity-0"), 2000)
+        setTimeout(() => banner.classList.toggle("hidden"), 2000)
 
         button.addEventListener("click", () => {
-            banner.classList.toggle("opacity-0")
+            banner.classList.toggle("hidden")
             localStorage.setItem(id, "yes")
         })
     }

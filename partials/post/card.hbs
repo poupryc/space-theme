@@ -1,0 +1,45 @@
+<article class="flex flex-col justify-between bg-white shadow-sm border rounded {{post_class}}">
+    <div>
+        <img class="w-full h-52 object-cover rounded-t"
+             src="{{img_url feature_image size="l"}}"
+             alt="{{feature_image_alt}}">
+
+        <div class="p-7 mb-5 pb-0">
+            <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
+                <a href="{{primary_tag.url}}" aria-label="Category">
+                    {{primary_tag.name}}
+                </a>
+                <time datetime="{{date format="YYYY-MM-DD"}}" class="text-gray-600">
+                    {{#if primary_tag}}—{{/if}} {{date format="DD MMMM YYYY"}}
+                </time>
+            </p>
+            <a href="{{url}}" aria-label="Article" class="block">
+                <h1 class="inline-block mb-3 text-2xl font-bold leading-7 text-black">
+                    {{title}}
+                </h1>
+                <p class="text-gray-700">
+                    {{excerpt}}
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="flex items-center p-7 pt-0">
+        <a href="{{primary_author.url}}" class="contents">
+
+            <div>
+                <img
+                    src="{{img_url primary_author.profile_image size="small"}}"
+                    alt="avatar" class="object-cover w-10 h-10 rounded-full shadow-sm" />
+            </div>
+
+            <div class="pl-3">
+                <p aria-label="Author" title="Author" class="font-semibold text-gray-800">
+                    {{primary_author.name}}
+                </p>
+                <p class="text-sm font-medium leading-4 text-gray-600">Auteur</p>
+            </div>
+
+        </a>
+    </div>
+</article>
