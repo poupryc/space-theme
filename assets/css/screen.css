@@ -10,8 +10,12 @@ production stylesheet in assets/built/screen.css using: gulp dev
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.home-template, .post-template {
+.home-template, .post-template, .page-template {
     @apply bg-slate-900;
+}
+
+figure figcaption {
+    @apply text-center;
 }
 
 figure figcaption a {
