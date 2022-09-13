@@ -10,109 +10,46 @@
     <title>{{meta_title}}</title>
 
     {{ghost_head}}
-    {{!-- Outputs important meta data and settings, should always be in <head> --}}
-
 </head>
 
 <body class="{{body_class}}">
-<div class="gh-viewport">
 
-<header id="gh-head" class="gh-head">
-    <nav class="gh-head-inner gh-container">
-
-        <div class="gh-head-brand">
-            <a class="gh-head-logo" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
+<section class="flex items-center h-full p-16 bg-gray-900 text-gray-100 h-screen">
+	<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+		<div class="max-w-md text-center">
+			<h2 class="mb-8 font-extrabold text-9xl text-gray-600">
+				<span class="sr-only">{{statusCode}} Error</span>
+				{{statusCode}}
+			</h2>
+			<p class="text-2xl font-semibold md:text-3xl">{{message}}</p>
+			<a rel="noopener noreferrer" href="/" class="block mt-8 px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">
+                Back to homepage
             </a>
-            <a class="gh-burger" role="button">
-                <div class="gh-burger-box">
-                    <div class="gh-burger-inner"></div>
-                </div>
-            </a>
-        </div>
-        <div class="gh-head-menu">
-            {{navigation}}
-        </div>
-        <div class="gh-head-actions">
-            <div class="gh-head-actions-list">
-                {{#if @site.facebook}}
-                <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                {{/if}}
-                {{#if @site.twitter}}
-                <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                {{/if}}
-                <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
-            </div>
-        </div>
-    </nav>
-</header>
+		</div>
+	</div>
+</section>
 
-<main class="gh-main">
+{{#if errorDetails}}
+    <section class="error-stack">
+        <h3>Theme errors</h3>
 
-    <section class="gh-page gh-error">
-        <div class="gh-container">
+        <ul class="error-stack-list">
+            {{#foreach errorDetails}}
+                <li>
+                    <em class="error-stack-function">{{{rule}}}</em>
 
-            <section class="gh-error-content">
-
-                <h1 class="gh-error-code">{{statusCode}}</h1>
-                <p class="gh-error-description">{{message}}</p>
-                <p class="gh-error-link"><a href="{{@site.url}}">Go to the front page →</a></p>
-
-                {{#if errorDetails}}
-                <section class="gh-error-stack">
-                    <h4>Theme errors:</h4>
-                    <ul class="gh-error-stack-list">
-                        {{#foreach errorDetails}}
-                        <li>
-                            <h5 class="gh-error-stack-function">{{{rule}}}</h5>
-
-                            {{#foreach failures}}
-                            <span class="gh-error-stack-file"><strong>Ref:</strong> {{ref}}</span><br>
-                            <span class="gh-error-stack-file"><strong>Message:</strong> {{message}}</span>
-                            {{/foreach}}
-                        </li>
-                        {{/foreach}}
-                    </ul>
-                </section>
-                {{/if}}
-
-            </section>
-
-        </div>
+                    {{#foreach failures}}
+                        <p><span class="error-stack-file">Ref: {{ref}}</span></p>
+                        <p><span class="error-stack-file">Message: {{message}}</span></p>
+                    {{/foreach}}
+                </li>
+            {{/foreach}}
+        </ul>
     </section>
+{{/if}}
 
-</main>
-
-<footer class="gh-foot">
-    <div class="gh-container">
-        <div class="gh-foot-menu">
-            {{navigation}}
-        </div>
-        <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-        </div>
-    </div>
-</footer>
-
-</div>
-
-<script src="{{asset "built/jquery-3.4.1.min.js"}}"></script>
-
-<script>
-$(document).ready(function () {
-    // Mobile Menu Trigger
-    $('.gh-burger').click(function () {
-        $('body').toggleClass('gh-head-open');
-    });
-});
-</script>
 
 {{ghost_foot}}
-{{!-- Outputs important scripts - should always be included before closing body tag --}}
 
 </body>
 </html>

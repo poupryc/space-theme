@@ -1,4 +1,4 @@
-<aside class="fixed w-full z-10 opacity-0 md:mt-5 transform transition-all duration-300 ease-out"
+<aside class="fixed w-full hidden z-20 md:mt-5 transform transition-all duration-300 ease-out"
        id="banner">
     <div class="bg-indigo-600 md:rounded-lg rounded-b-lg max-w-7xl mx-auto py-3 px-3.5">
         <div class="flex items-center justify-between flex-wrap">
@@ -35,6 +35,7 @@
 <script async>
     const id = "{{id}}_banner_hidden"
     const isHidden = localStorage.getItem(id)
+
     if (!isHidden) {
         const banner = document.getElementById("banner")
         const button = banner.querySelector("button")

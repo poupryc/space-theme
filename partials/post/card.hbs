@@ -1,12 +1,14 @@
-<article class="flex flex-col justify-between bg-white shadow-sm border rounded {{post_class}}">
+<article class="flex flex-col justify-between bg-white shadow-sm rounded-xl {{post_class}}">
     <div>
-        <img class="w-full h-52 object-cover rounded-t"
+        <a href="{{url}}" aria-label="Article" class="block">
+            <img class="w-full h-52 object-cover rounded-t"
              src="{{img_url feature_image size="l"}}"
              alt="{{feature_image_alt}}">
+        </a>
 
         <div class="p-7 mb-5 pb-0">
             <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
-                <a href="{{primary_tag.url}}" aria-label="Category">
+                <a class="text-black" href="{{primary_tag.url}}" aria-label="Category">
                     {{primary_tag.name}}
                 </a>
                 <time datetime="{{date format="YYYY-MM-DD"}}" class="text-gray-600">

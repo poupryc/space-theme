@@ -21,3 +21,7 @@ figure figcaption {
 figure figcaption a {
     @apply font-semibold;
 }
+
+.home-template article.post {
+    @apply border
+}
