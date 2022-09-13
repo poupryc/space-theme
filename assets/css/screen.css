@@ -25,3 +25,8 @@ figure figcaption a {
 .home-template article.post {
     @apply border
 }
+
+/* TODO */
+.kg-width-full img,
+.kg-width-wide img{
+}
